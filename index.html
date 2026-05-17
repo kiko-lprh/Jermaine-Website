@@ -1,0 +1,243 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JWhite — Homemade Food & Catering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav id="navbar">
+    <div class="nav-logo">J<span>W</span></div>
+    <ul class="nav-links">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#catering">Catering</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">&#9776;</button>
+  </nav>
+
+  <!-- Mobile nav drawer -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">&times;</button>
+    <ul>
+      <li><a href="#menu" class="mobile-nav-link">Menu</a></li>
+      <li><a href="#catering" class="mobile-nav-link">Catering</a></li>
+      <li><a href="#about" class="mobile-nav-link">About</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-tag">✦ Homemade &amp; Fresh Daily</div>
+      <h1>Food Made With <em>Heart &amp; Soul</em></h1>
+      <p>Bold flavors, honest ingredients, and cooking that feels like home. Available for orders, events, and catering throughout the area.</p>
+      <div class="btn-row">
+        <a href="#menu" class="btn-primary">See the Menu</a>
+        <a href="#contact" class="btn-ghost">Book Catering →</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <img
+        class="hero-photo"
+        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop"
+        alt="Colorful spread of homemade food"
+      />
+      <div class="badge-float badge-top">
+        <div class="badge-icon">🌿</div>
+        Fresh Ingredients
+        <span class="badge-label">Locally sourced</span>
+      </div>
+      <div class="badge-float badge-bottom">
+        <div class="badge-icon">⭐</div>
+        Made to Order
+        <span class="badge-label">Every time</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MENU ===================== -->
+  <section id="menu" class="menu-section">
+    <span class="section-tag">What We Make</span>
+    <h2 class="section-title">Our Menu</h2>
+    <p class="section-sub">Everything is prepared fresh — no frozen shortcuts, no cutting corners. Just real food that hits.</p>
+    <div class="divider"></div>
+
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="assets/ribs.png" alt="ribs" />
+        <div class="menu-card-body">
+          <div class="menu-card-name">Ribs</div>
+          <div class="menu-card-desc">This is placeholder text for a dish and can be replaced with a real food description later.</div>
+          <div class="menu-card-footer">
+            <span class="price">$999</span>
+            <span class="tag-pill">Fan Favorite</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="assets/burger.webp" alt="Hearty stew" />
+        <div class="menu-card-body">
+          <div class="menu-card-name">Burger</div>
+          <div class="menu-card-desc">Placeholder text for a menu item description, including ingredients, flavors, or preparation details.</div>
+          <div class="menu-card-footer">
+            <span class="price">$12</span>
+            <span class="tag-pill">Seasonal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="assets/double burger.jpg" alt="Fresh sides" />
+        <div class="menu-card-body">
+          <div class="menu-card-name">Double Burger</div>
+          <div class="menu-card-desc">This is sample placeholder content intended to describe a food dish on a menu or website.</div>
+          <div class="menu-card-footer">
+            <span class="price">$18</span>
+            <span class="tag-pill">Fan Favorite</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="assets/grilled.jpg" alt="Grilled plate" />
+        <div class="menu-card-body">
+          <div class="menu-card-name">Grilled Plates</div>
+          <div class="menu-card-desc">This is placeholder text for a dish and can be replaced with a real food description later.</div>
+          <div class="menu-card-footer">
+            <span class="price">From $14</span>
+            <span class="tag-pill">Best Seller</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <img class="menu-card-img" src="assets/chicken wings.jpg" alt="Wraps and rolls" />
+        <div class="menu-card-body">
+          <div class="menu-card-name">Wings</div>
+          <div class="menu-card-desc">This is placeholder text for a dish description.</div>
+          <div class="menu-card-footer">
+            <span class="price">From $10</span>
+            <span class="tag-pill">Portable</span>
+          </div>
+        </div>
+      </div>
+
+      <!---
+      <div class="menu-card">
+        <img class="menu-card-img" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=500&auto=format&fit=crop" alt="Desserts" />
+        <div class="menu-card-body">
+          <div class="menu-card-name">Sweet Endings</div>
+          <div class="menu-card-desc">Rotating homemade desserts — think flan, rice pudding, and fruit tarts. Ask what's fresh today.</div>
+          <div class="menu-card-footer">
+            <span class="price">From $5</span>
+            <span class="tag-pill">Daily Special</span>
+          </div>
+        </div>
+      </div>
+      -->
+
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="about">
+    <div class="about-text">
+      <span class="section-tag">Our Story</span>
+      <h2 class="section-title">Food That Brings People Together</h2>
+      <p class="section-sub">What started as cooking for family and friends turned into something bigger. Every dish is a recipe passed down and made with the same love as it always was.</p>
+      <div class="about-stats">
+        <div class="stat-box"><span class="stat-num">5+</span><span class="stat-desc">Years of cooking</span></div>
+        <div class="stat-box"><span class="stat-num">200+</span><span class="stat-desc">Happy customers</span></div>
+        <div class="stat-box"><span class="stat-num">50+</span><span class="stat-desc">Events catered</span></div>
+        <div class="stat-box"><span class="stat-num">100%</span><span class="stat-desc">Made from scratch</span></div>
+      </div>
+    </div>
+    <div class="about-img-wrap">
+      <img
+        class="about-img"
+        src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=700&auto=format&fit=crop"
+        alt="Cooking fresh food in the kitchen"
+      />
+    </div>
+  </section>
+
+  <!-- ===================== CATERING ===================== -->
+  <section id="catering" class="catering-section">
+    <span class="section-tag">Events &amp; Catering</span>
+    <h2 class="section-title">We Come to You</h2>
+    <p class="section-sub">Planning a party, family gathering, or work event? We put together custom menus and take care of the food so you don't have to.</p>
+    <div class="divider"></div>
+
+    <div class="catering-grid">
+
+      <div class="catering-card">
+        <img class="catering-card-img" src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&auto=format&fit=crop" alt="Private party catering" />
+        <div class="catering-card-body">
+          <h3>Private Parties</h3>
+          <p>Birthdays, graduations, backyard cookouts — we'll bring the food and make your guests happy.</p>
+        </div>
+      </div>
+
+      <div class="catering-card">
+        <img class="catering-card-img" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&auto=format&fit=crop" alt="Corporate event catering" />
+        <div class="catering-card-body">
+          <h3>Corporate Events</h3>
+          <p>Office lunches, team gatherings, and company celebrations catered on time.</p>
+        </div>
+      </div>
+
+      <div class="catering-card">
+        <img class="catering-card-img" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500&auto=format&fit=crop" alt="Special occasion catering" />
+        <div class="catering-card-body">
+          <h3>Special Occasions</h3>
+          <p>Weddings, quinceañeras, baby showers — custom menus tailored to your vision and your guests.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="catering-cta">
+      <a href="#contact" class="btn-primary">Get a Quote</a>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact" class="contact">
+    <span class="section-tag contact-tag">Get in Touch</span>
+    <h2 class="section-title">Ready to Order?</h2>
+    <p class="section-sub contact-sub">Reach out to place an order, ask about catering, or just find out what's cooking today.</p>
+
+    <div class="contact-methods">
+      <a href="tel:+14075550123" class="contact-chip">📞 (407) 555-0123</a>
+      <a href="mailto:email@placeholder.com" class="contact-chip">✉️ ask@jwhite.com</a>
+      <a href="#" class="contact-chip">📸 @jwhiteinsta</a>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <input type="text" name="name" placeholder="Your name" required />
+      <input type="text" name="contact" placeholder="Phone or email" required />
+      <button type="submit" class="btn-light">Send Message</button>
+    </form>
+
+    <p class="form-success" id="formSuccess">Thanks! We'll be in touch soon. 🍽️</p>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <p>© 2026 <span>Jwhite</span>. Made with love. All rights reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,740 @@
+/* ============================================================
+   SAZON STREET — style.css
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. CSS VARIABLES (design tokens)
+      Define all colors, fonts, and reusable values here.
+      Change a variable once → updates everywhere.
+   ------------------------------------------------------------ */
+:root {
+  --cream:      #FAF6EF;
+  --dark:       #1C1410;
+  --brown:      #6B3D2E;
+  --gold:       #D4872E;
+  --gold-light: #F0C87A;
+  --warm-gray:  #8A7B6F;
+  --card-bg:    #FFF8F0;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'DM Sans', system-ui, sans-serif;
+
+  --radius-sm:  0.4rem;
+  --radius-md:  1rem;
+  --radius-lg:  1.2rem;
+
+  --transition: 0.2s ease;
+}
+
+
+/* ------------------------------------------------------------
+   2. RESET & BASE
+      Remove browser defaults for consistent cross-browser look.
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth; /* smooth scrolling when clicking nav links */
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--cream);
+  color: var(--dark);
+  overflow-x: hidden; /* prevent horizontal scroll */
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ------------------------------------------------------------
+   3. NAVIGATION
+   ------------------------------------------------------------ */
+nav {
+  position: sticky;       /* sticks to the top as you scroll */
+  top: 0;
+  z-index: 100;           /* sits above all other content */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: rgba(250, 246, 239, 0.93);
+  backdrop-filter: blur(12px); /* frosted glass effect */
+  border-bottom: 1px solid rgba(107, 61, 46, 0.12);
+  transition: box-shadow var(--transition);
+}
+
+nav.scrolled {
+  box-shadow: 0 4px 20px rgba(107, 61, 46, 0.1);
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brown);
+  letter-spacing: -0.02em;
+}
+
+.nav-logo span {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  transition: color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--brown);
+}
+
+/* Hamburger — hidden on desktop, shown on mobile */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--brown);
+  cursor: pointer;
+}
+
+/* Mobile slide-in drawer */
+.mobile-nav {
+  display: none;               /* hidden by default */
+  position: fixed;
+  top: 0; right: 0;
+  width: 260px; height: 100vh;
+  background: var(--card-bg);
+  padding: 2rem 1.5rem;
+  z-index: 200;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav.open {
+  display: flex;
+  transform: translateX(0);
+}
+
+.mobile-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.mobile-nav-link {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--brown);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mobile-nav-close {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--warm-gray);
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+
+/* ------------------------------------------------------------
+   4. REUSABLE COMPONENTS
+      Buttons, section labels, dividers — used across sections.
+   ------------------------------------------------------------ */
+
+/* Primary filled button */
+.btn-primary {
+  display: inline-block;
+  background: var(--brown);
+  color: #FFF8F0;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btn-primary:hover {
+  background: #8a4e3b;
+  transform: translateY(-1px);
+}
+
+/* Ghost text link with arrow */
+.btn-ghost {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--brown);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: gap var(--transition);
+}
+
+.btn-ghost:hover {
+  gap: 0.7rem;
+}
+
+/* Light button used in contact section */
+.btn-light {
+  background: var(--gold-light);
+  color: var(--dark);
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.btn-light:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Small pill tag (used on menu cards) */
+.tag-pill {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.7rem;
+  border-radius: 2rem;
+  background: rgba(212, 135, 46, 0.12);
+  color: var(--gold);
+}
+
+/* Section label (small uppercase text above titles) */
+.section-tag {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+/* Section title (large serif heading) */
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 2.8rem); /* fluid size: shrinks on small screens */
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* Section subtitle text */
+.section-sub {
+  font-size: 1rem;
+  color: var(--warm-gray);
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+/* Gold decorative line */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 2px;
+  margin: 1.5rem 0;
+}
+
+/* Row for buttons side by side */
+.btn-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+
+/* ------------------------------------------------------------
+   5. HERO SECTION
+   ------------------------------------------------------------ */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 7rem 3rem 4rem;
+  gap: 3rem;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-light);
+  padding: 0.35rem 0.85rem;
+  border-radius: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1.2rem;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--brown);
+  display: block;
+}
+
+.hero p {
+  font-size: 1.05rem;
+  color: var(--warm-gray);
+  line-height: 1.8;
+  max-width: 440px;
+  margin-bottom: 2.2rem;
+}
+
+/* Right side: circular photo + floating badges */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-photo {
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;       /* makes it a circle */
+  object-fit: cover;        /* crops image to fill circle */
+  border: 6px solid var(--gold);
+  box-shadow: 0 30px 80px rgba(107, 61, 46, 0.25);
+  position: relative;
+  z-index: 1;
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Floating animation for the hero image */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+
+/* Small cards that float around the hero image */
+.badge-float {
+  position: absolute;
+  background: var(--card-bg);
+  border: 1px solid rgba(107, 61, 46, 0.15);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 1.1rem;
+  box-shadow: 0 8px 24px rgba(107, 61, 46, 0.12);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--dark);
+  animation: floatBadge 5s ease-in-out infinite;
+  z-index: 2;
+}
+
+.badge-top    { top: 10%; right: -10%; animation-delay: 0.5s; }
+.badge-bottom { bottom: 18%; left: -8%; animation-delay: 1.2s; }
+
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.badge-icon {
+  font-size: 1.2rem;
+  margin-bottom: 0.15rem;
+}
+
+.badge-label {
+  display: block;
+  color: var(--warm-gray);
+  font-size: 0.72rem;
+}
+
+
+/* ------------------------------------------------------------
+   6. MENU SECTION
+   ------------------------------------------------------------ */
+.menu-section {
+  padding: 5rem 3rem;
+  background: var(--cream);
+}
+
+/* CSS Grid: auto-fills columns, each at least 260px wide */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.menu-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(107, 61, 46, 0.1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;          /* clips image to card corners */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(107, 61, 46, 0.14);
+}
+
+.menu-card-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.menu-card-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.menu-card-name {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.4rem;
+}
+
+.menu-card-desc {
+  font-size: 0.88rem;
+  color: var(--warm-gray);
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.menu-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--brown);
+}
+
+
+/* ------------------------------------------------------------
+   7. ABOUT SECTION
+   ------------------------------------------------------------ */
+.about {
+  background: var(--dark);
+  color: #FFF8F0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 5rem 3rem;
+}
+
+.about .section-tag  { color: var(--gold-light); }
+.about .section-title { color: #FFF8F0; }
+.about .section-sub   { color: rgba(255, 248, 240, 0.6); }
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.stat-box {
+  border: 1px solid rgba(255, 248, 240, 0.12);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.stat-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 0.2rem;
+}
+
+.stat-desc {
+  font-size: 0.82rem;
+  color: rgba(255, 248, 240, 0.5);
+}
+
+.about-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;      /* keeps photo proportional */
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 4px solid var(--gold);
+}
+
+
+/* ------------------------------------------------------------
+   8. CATERING SECTION
+   ------------------------------------------------------------ */
+.catering-section {
+  padding: 5rem 3rem;
+  background: var(--cream);
+}
+
+.catering-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.catering-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(107, 61, 46, 0.12);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.catering-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(107, 61, 46, 0.12);
+}
+
+.catering-card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.catering-card-body {
+  padding: 1.2rem 1.4rem 1.5rem;
+}
+
+.catering-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+
+.catering-card p {
+  font-size: 0.88rem;
+  color: var(--warm-gray);
+  line-height: 1.7;
+}
+
+.catering-cta {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+
+/* ------------------------------------------------------------
+   9. CONTACT SECTION
+   ------------------------------------------------------------ */
+.contact {
+  background: var(--brown);
+  color: #FFF8F0;
+  text-align: center;
+  padding: 5rem 3rem;
+}
+
+.contact-tag { color: var(--gold-light); }
+
+.contact .section-title { color: #FFF8F0; margin-bottom: 0.75rem; }
+
+.contact-sub {
+  color: rgba(255, 248, 240, 0.65);
+  margin: 0 auto 2.5rem;
+}
+
+.contact-methods {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.contact-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 248, 240, 0.1);
+  border: 1px solid rgba(255, 248, 240, 0.2);
+  border-radius: 3rem;
+  padding: 0.75rem 1.4rem;
+  font-size: 0.9rem;
+  color: rgba(255, 248, 240, 0.9);
+  transition: background var(--transition);
+}
+
+.contact-chip:hover {
+  background: rgba(255, 248, 240, 0.18);
+}
+
+.contact-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 480px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact-form input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.85rem 1.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 248, 240, 0.25);
+  background: rgba(255, 248, 240, 0.1);
+  color: #FFF8F0;
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.contact-form input::placeholder {
+  color: rgba(255, 248, 240, 0.45);
+}
+
+.contact-form input:focus {
+  border-color: var(--gold-light);
+}
+
+/* Success message — hidden until form is submitted */
+.form-success {
+  display: none;
+  margin-top: 1.5rem;
+  color: var(--gold-light);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.form-success.visible {
+  display: block;
+}
+
+
+/* ------------------------------------------------------------
+   10. FOOTER
+   ------------------------------------------------------------ */
+footer {
+  background: var(--dark);
+  color: rgba(255, 248, 240, 0.45);
+  text-align: center;
+  padding: 2rem 3rem;
+  font-size: 0.82rem;
+}
+
+footer span {
+  color: var(--gold);
+}
+
+
+/* ------------------------------------------------------------
+   11. RESPONSIVE (MOBILE)
+       Styles inside @media only apply below 768px wide.
+   ------------------------------------------------------------ */
+@media (max-width: 768px) {
+
+  nav {
+    padding: 1rem 1.5rem;
+  }
+
+  /* Hide desktop nav links, show hamburger */
+  .nav-links {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: block;
+  }
+
+  /* Stack hero vertically */
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 6rem 1.5rem 3rem;
+    text-align: center;
+  }
+
+  .hero p {
+    margin: 0 auto 2rem;
+  }
+
+  .btn-row {
+    justify-content: center;
+  }
+
+  /* Hide floating hero visual on mobile */
+  .hero-visual {
+    display: none;
+  }
+
+  /* Stack about section vertically */
+  .about {
+    grid-template-columns: 1fr;
+    padding: 3rem 1.5rem;
+  }
+
+  /* Stack catering cards vertically */
+  .catering-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Reduce padding on all sections */
+  section,
+  .menu-section,
+  .catering-section,
+  .contact {
+    padding: 3.5rem 1.5rem;
+  }
+}
