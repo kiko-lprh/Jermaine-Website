@@ -4,9 +4,7 @@
 
 
 /* ------------------------------------------------------------
-   1. CSS VARIABLES (design tokens)
-      Define all colors, fonts, and reusable values here.
-      Change a variable once → updates everywhere.
+   1. CSS VARIABLES 
    ------------------------------------------------------------ */
 :root {
   --cream:      #FAF6EF;
@@ -26,7 +24,6 @@
 
   --transition: 0.2s ease;
 }
-
 
 /* ------------------------------------------------------------
    2. RESET & BASE
@@ -62,7 +59,7 @@ a {
 
 
 /* ------------------------------------------------------------
-   3. NAVIGATION
+   NAV
    ------------------------------------------------------------ */
 nav {
   position: sticky;       /* sticks to the top as you scroll */
@@ -172,8 +169,7 @@ nav.scrolled {
 
 
 /* ------------------------------------------------------------
-   4. REUSABLE COMPONENTS
-      Buttons, section labels, dividers — used across sections.
+   4. REUSABLES
    ------------------------------------------------------------ */
 
 /* Primary filled button */
@@ -403,6 +399,16 @@ nav.scrolled {
 .menu-section {
   padding: 5rem 3rem;
   background: var(--cream);
+}
+
+.menu-category-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--brown);
+  margin: 6rem 0 1.25rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--gold);
 }
 
 /* CSS Grid: auto-fills columns, each at least 260px wide */
